@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Priority Inbox</title>
+
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 20px;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .high {
+      background-color: #d32f2f;
+    }
+
+    .medium {
+      background-color: #f57c00;
+    }
+
+    .low {
+      background-color: #388e3c;
+    }
+
+    .type {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .time {
+      color: gray;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Priority Inbox</h1>
+
+  <div class="container">
+
+    <div class="card">
+
+      <div class="badge high">
+        HIGH PRIORITY
+      </div>
+
+      <h2>
+        Google interview schedule released
+      </h2>
+
+      <div class="type">
+        Placement
+      </div>
+
+      <div class="time">
+        2026-05-16 10:30 AM
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="badge medium">
+        MEDIUM PRIORITY
+      </div>
+
+      <h2>
+        Semester results published
+      </h2>
+
+      <div class="type">
+        Result
+      </div>
+
+      <div class="time">
+        2026-05-16 09:00 AM
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="badge low">
+        LOW PRIORITY
+      </div>
+
+      <h2>
+        Hackathon registration started
+      </h2>
+
+      <div class="type">
+        Event
+      </div>
+
+      <div class="time">
+        2026-05-15 08:00 PM
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

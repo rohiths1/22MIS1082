@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0"/>
+
+  <title>
+    Campus Notification System
+  </title>
+
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    header {
+      background: #1976d2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .controls {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    select,
+    button {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      background: #1976d2;
+      color: white;
+      cursor: pointer;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 20px;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .placement {
+      background: #d32f2f;
+    }
+
+    .result {
+      background: #f57c00;
+    }
+
+    .event {
+      background: #388e3c;
+    }
+
+    .time {
+      color: gray;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  Campus Notification System
+</header>
+
+<div class="controls">
+
+  <select id="filter">
+
+    <option value="All">
+      All Notifications
+    </option>
+<option value="Placement">
+      Placement
+    </option>
+
+    <option value="Result">
+      Result
+    </option>
+
+    <option value="Event">
+      Event
+    </option>
+
+  </select>
+
+  <button onclick="loadNotifications()">
+    Apply Filter
+  </button>
+
+</div>
+
+<div class="container"
+     id="notificationContainer">
+
+</div>
+
+<script>
+
+  const notifications = [
+
+    {
+      type: "Placement",
+      message: "Google interview schedule released",
+      time: "2026-05-16 10:30 AM"
+    },
+
+    {
+      type: "Result",
+      message: "Semester results published",
+      time: "2026-05-16 09:00 AM"
+    },
+
+    {
+      type: "Event",
+      message: "Hackathon registration started",
+      time: "2026-05-15 08:00 PM"
+    },
+
+    {
+      type: "Placement",
+      message: "Microsoft coding round announced",
+      time: "2026-05-16 12:30 PM"
+    }
+
+  ];
+
+  function getBadgeClass(type) {
+
+    if (type === "Placement")
+      return "placement";
+
+    if (type === "Result")
+      return "result";
+
+    return "event";
+  }
+
+  function loadNotifications() {
+
+    const container =
+      document.getElementById(
+        "notificationContainer"
+      );
+
+    const filter =
+      document.getElementById(
+        "filter"
+      ).value;
+
+    container.innerHTML = "";
+
+    let filteredNotifications =
+      notifications;
+
+    if (filter !== "All") {
+
+      filteredNotifications =
+        notifications.filter(
+          item => item.type === filter
+        );
+    }
+
+    filteredNotifications.forEach(
+      notification => {
+
+      const card =
+        document.createElement("div");
+
+      card.className = "card";
+
+      card.innerHTML = `
+
+        <div class="badge ${getBadgeClass(notification.type)}">
+          ${notification.type}
+        </div>
+
+        <h2>
+          ${notification.message}
+        </h2>
+
+        <div class="time">
+          ${notification.time}
+        </div>
+
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+  loadNotifications();
+
+</script>
+
+</body>
+</html>
