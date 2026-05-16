@@ -1,5 +1,362 @@
 # Notification Priority System Design
+# Stage 1 - Notification Priority Logic
 
+## Overview
+
+The purpose of Stage 1 is to design and implement a notification prioritization mechanism that identifies important notifications and displays them in a separate Priority Inbox.
+
+The prioritization logic is based on:
+
+- notification category
+
+- notification recency
+
+This helps users quickly identify critical notifications.
+
+---
+
+# Notification Categories
+
+The system currently supports three categories:
+
+| Notification Type | Description |
+
+|-------------------|-------------|
+
+| Placement | Placement and recruitment updates |
+
+| Result | Academic result notifications |
+
+| Event | General event notifications |
+
+---
+
+# Priority Assignment
+
+Each category is assigned a weight based on importance.
+
+| Type | Weight |
+
+|------|--------|
+
+| Placement | 50 |
+
+| Result | 35 |
+
+| Event | 20 |
+
+Placement notifications are treated as the highest priority because they usually require immediate action.
+
+---
+
+# Recency Consideration
+
+Recent notifications receive additional priority boost.
+
+Older notifications gradually lose importance over time.
+
+This prevents outdated notifications from dominating the priority list.
+
+---
+
+# Priority Formula
+copy
+
+
+
+Priority Score =
+
+Category Weight + Recency Boost
+
+
+Where:
+copy
+
+
+
+Recency Boost =
+
+30 - Minutes Since Notification
+
+
+---
+
+# Sorting Strategy
+
+Notifications are sorted using:
+
+1. Highest priority score
+
+2. Latest timestamp
+
+This ensures that important and recent notifications appear first.
+
+---
+
+# Priority Inbox
+
+The Priority Inbox displays:
+
+- top notifications
+
+- high priority alerts
+
+- recent important updates
+
+The inbox improves visibility for urgent notifications.
+
+---
+
+# Features Implemented
+
+- Notification ranking logic
+
+- Priority score calculation
+
+- Top notification selection
+
+- Priority badge display
+
+- Card-based layout
+
+- Responsive design
+
+---
+
+# Benefits
+
+The designed system provides:
+
+- faster access to important updates
+
+- reduced notification clutter
+
+- improved user experience
+
+- better visibility of urgent notifications
+
+---
+
+# Conclusion
+
+Stage 1 successfully implements a scalable notification prioritization strategy that combines category importance and recency analysis to improve notification management efficiency.
+# Stage 2 - Frontend Notification Application
+
+## Overview
+
+Stage 2 focuses on developing a frontend notification management application using ReactJS and Material UI.
+
+The application retrieves notifications from the provided API and presents them using a clean, responsive, and interactive user interface.
+
+---
+
+# Features
+
+The implemented frontend application includes:
+
+- Notification dashboard
+
+- Priority Inbox
+
+- Category-based filtering
+
+- Pagination support
+
+- Loading indicators
+
+- Error handling
+
+- Logging middleware integration
+
+- Responsive design
+
+---
+
+# Technology Stack
+
+| Technology | Purpose |
+
+|------------|---------|
+
+| ReactJS | Frontend framework |
+
+| JavaScript | Application logic |
+
+| Material UI | UI components |
+
+| Axios | API communication |
+
+| React Router | Navigation |
+
+---
+
+# Frontend Architecture
+
+The application is divided into reusable modules for maintainability and scalability.
+
+## Main Sections
+
+- Components
+
+- Pages
+
+- Services
+
+- Utilities
+
+- Styles
+
+---
+
+# Components
+
+## Header
+
+Displays application title and navigation.
+
+## Notification Card
+
+Displays:
+
+- notification message
+
+- notification category
+
+- timestamp
+
+- priority label
+
+## Filter Bar
+
+Allows users to filter notifications by category.
+
+## Priority Inbox
+
+Displays top-ranked notifications separately.
+
+## Loader
+
+Displayed during API loading states.
+
+---
+
+# API Integration
+
+The frontend communicates with the provided backend APIs using Axios.
+
+## Notifications API
+
+Used for:
+
+- retrieving notifications
+
+- pagination
+
+- filtering
+
+## Logging API
+
+Used for:
+
+- activity tracking
+
+- API logging
+
+- error monitoring
+
+---
+
+# Logging Middleware
+
+A centralized logging middleware is implemented to record frontend activities.
+
+The middleware logs:
+
+- successful API requests
+
+- failed API requests
+
+- page loading
+
+- filter updates
+
+- notification interactions
+
+---
+
+# Pagination
+
+Pagination is implemented to efficiently manage large notification datasets.
+
+Advantages:
+
+- improved rendering performance
+
+- controlled API usage
+
+- better user experience
+
+---
+
+# Responsive Design
+
+The application supports:
+
+- desktops
+
+- tablets
+
+- mobile devices
+
+Responsive layouts are implemented using Material UI utilities.
+
+---
+
+# Error Handling
+
+The application handles:
+
+- API failures
+
+- empty responses
+
+- invalid data
+
+- loading states
+
+Fallback UI is displayed whenever required.
+
+---
+
+# Performance Optimization
+
+Several frontend optimization techniques are implemented:
+
+- reusable components
+
+- modular architecture
+
+- efficient sorting logic
+
+- reduced unnecessary rendering
+
+- controlled pagination
+
+---
+
+# Security
+
+Protected APIs are accessed using authorization tokens.
+
+Tokens are attached securely through request headers.
+
+Sensitive data is not exposed directly in the UI.
+
+---
+
+# Conclusion
+
+Stage 2 delivers a responsive and scalable frontend notification management application capable of efficiently handling notification retrieval, prioritization, filtering, and user interaction while maintaining a clean and maintainable architecture.
 ## Introduction
 
 The objective of this project is to build a frontend-based notification management platform that helps users efficiently view and organize campus notifications. Since users may receive multiple notifications frequently, the system focuses on identifying and displaying the most relevant notifications first.
